@@ -93,5 +93,23 @@ void Carte::affiche(){
 }
 
 void Carte::update(){
+    for(int i=0; i<vecteur2D.size();i++){
+        for(int j=0; j<vecteur2D[i].size(); j++){
+            int o_type = vecteur2D[i][j]->type();  //0 = rien, 1=obstacle, 2=nourriture, 3=fourmieAllier, 4=fourmieEnnemie, 5=fourmiliereAllier, 6=fourmiliereEnnemis (ALLIER OU ENNEMIS PAS ENCORE DEFINIS)
+            switch(o_type)
+            {
+                case 3://Fourmie
+                    {
+                    Fourmie* fourmie =  dynamic_cast<Fourmie*>(this->vecteur2D[i][j]);
+                    fourmie->observeEtDecide(this);
+                    }
 
+                case 5://Fourmilliere
+                    {
+                    Fourmilliere* fourmilliere = dynamic_cast<Fourmilliere*>(this->vecteur2D[i][j]);
+                    fourmilliere->checkFourmies(this);
+                    }
+            }
+        }
+    }
 }

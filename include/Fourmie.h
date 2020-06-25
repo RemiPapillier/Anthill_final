@@ -14,6 +14,7 @@ class Fourmie: public Box
     public:
         Fourmie();
         virtual ~Fourmie();
+        virtual observeEtDecide(Carte* C);
         void deplacement(Carte* C, int X, int Y);
         void deplacementAleatoireEtRecolte(Carte* C, int elementHaut, int elementBas, int elementGauche, int elementDroite);
         void retourFourmilliere(Carte* C, int elementHaut, int elementBas, int elementGauche, int elementDroite);

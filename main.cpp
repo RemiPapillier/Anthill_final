@@ -190,6 +190,7 @@ int main() {
     cout << "\n";
 
   while(continuer != 'q' && continuer != 'Q') {
+    m_carte->update();  //MAJ les cases de la carte et lance les routines des fourmis et des fourmillieres.
     cout << " --- Cycle : " << cycle << " --- \n";
     m_carte->affiche();
     cin.clear();
