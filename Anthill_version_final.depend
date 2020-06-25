@@ -1,0 +1,58 @@
+# depslib dependency file v1.0
+1593085701 source:c:\users\212721431\documents\github\anthill_version_final\main.cpp
+	<iostream>
+	<windows.h>
+	<climits>
+	<stdio.h>
+	<Carte.h>
+
+1593085718 c:\users\212721431\documents\github\anthill_version_final\include\carte.h
+	<iostream>
+	<vector>
+	<Box.h>
+	<typeinfo>
+	<stdlib.h>
+	<Obstacle.h>
+	<Nourriture.h>
+	<time.h>
+
+1593086034 c:\users\212721431\documents\github\anthill_version_final\include\box.h
+	<iostream>
+
+1593085769 c:\users\212721431\documents\github\anthill_version_final\include\obstacle.h
+	"Box.h"
+
+1593085753 c:\users\212721431\documents\github\anthill_version_final\include\nourriture.h
+	"Box.h"
+
+1593085782 source:c:\users\212721431\documents\github\anthill_version_final\src\box.cpp
+	"Box.h"
+
+1593085792 source:c:\users\212721431\documents\github\anthill_version_final\src\carte.cpp
+	"Carte.h"
+
+1593085833 source:c:\users\212721431\documents\github\anthill_version_final\src\nourriture.cpp
+	"Nourriture.h"
+
+1593085838 source:c:\users\212721431\documents\github\anthill_version_final\src\obstacle.cpp
+	"Obstacle.h"
+
+1593086146 source:c:\users\212721431\documents\github\anthill_version_final\src\guerriere.cpp
+	"Guerriere.h"
+	<iostream>
+
+1593085961 c:\users\212721431\documents\github\anthill_version_final\include\guerriere.h
+	"Fourmie.h"
+
+1593086821 c:\users\212721431\documents\github\anthill_version_final\include\fourmie.h
+	"Box.h"
+	"Carte.h"
+
+1593086662 source:c:\users\212721431\documents\github\anthill_version_final\src\ouvriere.cpp
+	"Ouvriere.h"
+
+1593085767 c:\users\212721431\documents\github\anthill_version_final\include\ouvriere.h
+	"Fourmie.h"
+	"Guerriere.h"
+	"Carte.h"
+
