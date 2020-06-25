@@ -48,6 +48,10 @@ void Carte::initialisation(){
             compteur++;
         }
     }
+    this->affiche();
+}
+
+void Carte::affiche(){
     for(int i=0; i<vecteur2D.size();i++){
         for(int j=0; j<vecteur2D[i].size(); j++){
             int o_type = vecteur2D[i][j]->type();  //0 = rien, 1=obstacle, 2=nourriture, 3=fourmieAllier, 4=fourmieEnnemie, 5=fourmiliereAllier, 6=fourmiliereEnnemis (ALLIER OU ENNEMIS PAS ENCORE DEFINIS)

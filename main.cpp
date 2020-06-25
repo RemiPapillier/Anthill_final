@@ -182,5 +182,24 @@ int main() {
   Carte* m_carte = new Carte(map_columns, map_rows, obstacles, food, evaporation);
   m_carte->initialisation();
 
+  int cycle = 0;
+
+  char continuer;
+    cout << "\n Press any key to continue or q to stop : ";
+    cin >> continuer;
+    cout << "\n";
+
+  while(continuer != 'q' && continuer != 'Q') {
+    cout << " --- Cycle : " << cycle << " --- \n";
+    m_carte->affiche();
+    cin.clear();
+    cout << "\n Press any key to continue or q to stop : ";
+    cin >> continuer;
+    cout << "\n";
+    cycle++;
+  }
+  cout << "\n --- FIN DU PROGRAMME ---\n\n";
+  cin.clear();
+
   return 0;
 }

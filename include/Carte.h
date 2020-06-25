@@ -20,9 +20,9 @@ class Carte
         Carte(int col, int line, int obs, int f, float phe);
         virtual ~Carte();
         void initialisation();
+        void affiche();
         void update();
         std::vector<std::vector<Box*> > vecteur2D;
-
 
     protected:
         int dimensionC;
@@ -30,9 +30,6 @@ class Carte
         int obstacles;
         int food;
         float pheromone;
-
-    private:
-
 };
 
 #endif // CARTE_H
