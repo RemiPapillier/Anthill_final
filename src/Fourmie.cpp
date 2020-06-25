@@ -136,28 +136,29 @@ void Fourmie::retourFourmilliere(Carte* C, int elementHaut, int elementBas, int 
             {
                 case 0:
                     //HAUT
-                    if(elementHaut==0 && (abs(this.positionX-1-this->fourmilliereMaison.positionX) < abs(this.positionX-this->fourmilliereMaison.positionX))){
-                        deplacement(C, this.positionX-1, this.positionY);
+                    if( elementHaut==0 && ( abs(this->positionX -1 -this->fourmilliereMaison->positionX) < abs( this->positionX - this->fourmilliereMaison->positionX ) ) )
+                    {
+                        deplacement(C, this->positionX-1, this->positionY);
                         deplacementFait = true;
                         break;
                     }
                 case 1:
                     //BAS
-                    if(elementBas==0 && (abs(this.positionX+1-this->fourmilliereMaison.positionX) < abs(this.positionX-this->fourmilliereMaison.positionX))){
-                        deplacement(C, this.positionX+1, this.positionY);
+                    if(elementBas==0 && (abs(this->positionX+1 -this->fourmilliereMaison->positionX) < abs(this->positionX -this->fourmilliereMaison->positionX))){
+                        deplacement(C, this->positionX+1, this->positionY);
                         deplacementFait = true;
                         break;
                     }
                 case 2:
                     //GAUCHE
-                    if(elementGauche==0 && (abs(this->positionY-1-this->fourmilliereMaison.positionY) < abs(this->positionY-this->fourmilliereMaison.positionY))){
+                    if(elementGauche==0 && (abs(this->positionY-1 -this->fourmilliereMaison->positionY) < abs(this->positionY-this->fourmilliereMaison->positionY))){
                         deplacement(C, this->positionX, this->positionY-1);
                         deplacementFait = true;
                         break;
                     }
                 case 3:
                     //DROITE
-                    if(elementBas==0 && (abs(this->positionY+1-this->fourmilliereMaison.positionY) < abs(this->positionY-this->fourmilliereMaison.positionY))){
+                    if(elementBas==0 && (abs(this->positionY+1 -this->fourmilliereMaison->positionY) < abs(this->positionY -this->fourmilliereMaison->positionY))){
                         deplacement(C, this->positionX, this->positionY+1);
                         deplacementFait = true;
                         break;
@@ -169,8 +170,11 @@ void Fourmie::retourFourmilliere(Carte* C, int elementHaut, int elementBas, int 
 }
 
 void Fourmie::entrerFourmilliere(Carte* C, int X, int Y){
-    Fourmilliere* fourmilliereCible = C->vecteur2D.at(X).at(Y);
-    fourmilliereCible.vecteurFourmie.push_back(this);
-    this.positionX = X;
-    this.positionY = Y;
+    //Ajout de la fourmie dans la fourmilliere
+    Fourmilliere* fourmilliereCible = (Fourmilliere*)C->vecteur2D.at(X).at(Y);
+    fourmilliereCible->vecteurFourmie.push_back(this);
+    //MAJ la carte (Retirer la fourmie de là où elle étais)
+    C->vecteur2D.at(this->positionX).at(this->positionY) = new Box(this->positionX,this->positionY);
+    this->positionX = X;
+    this->positionY = Y;
 }

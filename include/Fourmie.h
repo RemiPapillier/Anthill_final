@@ -3,8 +3,11 @@
 
 #include "Box.h"
 #include "Carte.h"
+#include "Fourmilliere.h"
 
 class Fourmilliere;
+
+class Carte;
 
 class Fourmie: public Box
 {
@@ -21,7 +24,7 @@ class Fourmie: public Box
         void entrerFourmilliere(Carte* C, int X, int Y);
         int type();
 
-    protected:
+ //   protected:
         int equipe;
         Fourmilliere* fourmilliereMaison;
         int objectifActuel;   //0=Attente, 1=Cherche Nourriture, 2=Retour � la fourmili�re, 3=Faim, 4=Combat

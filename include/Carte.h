@@ -10,6 +10,9 @@
 #include <Nourriture.h>
 #include <time.h>
 
+#include "Fourmilliere.h"
+
+
 class Carte
 {
     public:
@@ -18,7 +21,7 @@ class Carte
         virtual ~Carte();
         void initialisation();
         void update();
-        std::vector<std::vector<Box*>> vecteur2D;
+        std::vector<std::vector<Box*> > vecteur2D;
 
 
     protected:
