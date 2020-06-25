@@ -15,6 +15,7 @@ class Fourmilliere: public Box
 {
     public:
         Fourmilliere();
+        Fourmilliere(int equipe, int nourritureDeBase, int nombreDeFourmis, int posX, int posY);
         virtual ~Fourmilliere();
         int type();
         void checkFourmies(Carte* C);

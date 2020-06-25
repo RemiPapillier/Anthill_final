@@ -14,6 +14,10 @@ int Fourmie::type(){
     return 3;
 }
 
+void Fourmie::observeEtDecide(Carte* C) {
+//virtual
+}
+
 void Fourmie::encaisseAttaque(int dmgRecut) {
   if (dmgRecut-resistance > 0) {
     santeActuel = santeActuel - (dmgRecut - resistance);
@@ -41,7 +45,7 @@ void Fourmie::deplacement(Carte* C, int X, int Y) {
 }
 
 void Fourmie::mourir() {
-  //a d�finir
+  //a definir
   //Lacher les ressources sur place.
 }
 
