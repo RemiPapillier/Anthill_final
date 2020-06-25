@@ -21,6 +21,7 @@ class Carte
         virtual ~Carte();
         void initialisation();
         void affiche();
+        void resetActions();
         void update();
         std::vector<std::vector<Box*> > vecteur2D;
 

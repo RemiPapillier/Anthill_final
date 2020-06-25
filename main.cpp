@@ -10,7 +10,7 @@ int get_columns_prompt(){
   _CONSOLE_SCREEN_BUFFER_INFO csbi;
   int columns;
   GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-  columns= csbi.srWindow.Right - csbi.srWindow.Left +1;
+  columns= csbi.srWindow.Right - csbi.srWindow.Left +1 -2; //-2 a cause des | sur les cotes
   return columns-1;
 }
 
@@ -190,6 +190,7 @@ int main() {
     cout << "\n";
 
   while(continuer != 'q' && continuer != 'Q') {
+    m_carte->resetActions(); //Remet les fourmis en active ce qui leur permet d'agir une fois.
     m_carte->update();  //MAJ les cases de la carte et lance les routines des fourmis et des fourmillieres.
     cout << " --- Cycle : " << cycle << " --- \n";
     m_carte->affiche();

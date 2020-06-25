@@ -38,6 +38,7 @@ class Fourmie: public Box
         int vitesseDeplacement;
         int force;
         int nourriturePortee;
+        bool active;
 
     private:
 };

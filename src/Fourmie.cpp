@@ -16,6 +16,7 @@ int Fourmie::type(){
 
 void Fourmie::observeEtDecide(Carte* C) {
 //virtual
+std::cout << "DEBUG: Pas cense afficher ca... \n ";
 }
 
 void Fourmie::encaisseAttaque(int dmgRecut) {
@@ -40,8 +41,8 @@ void Fourmie::deplacement(Carte* C, int X, int Y) {
     this->positionY = Y;
 
     //MAJ DE LA POSITION DANS LE VECTEUR2D (Echange entre l'objet dans la cible et la fourmie en position actuelle)
-    C->vecteur2D.at(X).at(Y) = this;
     C->vecteur2D.at(ancienFourmieX).at(ancienFourmieY) = caseCible;
+    C->vecteur2D.at(X).at(Y) = this;
 }
 
 void Fourmie::mourir() {
@@ -65,27 +66,33 @@ void Fourmie::recolter(Carte* C, int X, int Y){
 void Fourmie::deplacementAleatoireEtRecolte(Carte* C, int elementHaut, int elementBas, int elementGauche, int elementDroite){
     if(elementHaut==2 || elementBas==2 || elementGauche==2 || elementDroite==2 ) //NOURRITURE A PROXIMITE
     {
+        std::cout << "decide de recolter de la nourriture ";
         if(elementHaut==2) {
+            std::cout << "au Nord.\n";
             recolter(C, this->positionX-1, this->positionY);
         } else if(elementBas==2) {
+            std::cout << "au Sud.\n";
             recolter(C, this->positionX+1, this->positionY);
         } else if(elementGauche==2) {
+            std::cout << "a l'Ouest.\n";
             recolter(C, this->positionX, this->positionY-1);
         } else if(elementDroite==2) {
+            std::cout << "a l'Est.\n";
             recolter(C, this->positionX, this->positionY+1);
         }
     } else {
 
             int randDirection = rand() % 4; //random entre 0 et 3 //DEPLACEMENT ALEATOIRE
             bool deplacementFait = false;
-
+        std::cout << "decide de se deplacer ";
+        if(elementHaut == 0 || elementBas == 0 || elementGauche == 0 || elementDroite == 0 ) {
             while(!deplacementFait) {
-
                 switch(randDirection)
                 {
                     case 0:
                         //HAUT
                         if(elementHaut==0){
+                            std::cout << "au Nord.\n";
                             deplacement(C, this->positionX-1, this->positionY);
                             deplacementFait = true;
                             break;
@@ -93,6 +100,7 @@ void Fourmie::deplacementAleatoireEtRecolte(Carte* C, int elementHaut, int eleme
                     case 1:
                         //BAS
                         if(elementBas==0){
+                            std::cout << "au Sud.\n";
                             deplacement(C, this->positionX+1, this->positionY);
                             deplacementFait = true;
                             break;
@@ -100,6 +108,7 @@ void Fourmie::deplacementAleatoireEtRecolte(Carte* C, int elementHaut, int eleme
                     case 2:
                         //GAUCHE
                         if(elementGauche==0){
+                            std::cout << "a l'Ouest.\n";
                             deplacement(C, this->positionX, this->positionY-1);
                             deplacementFait = true;
                             break;
@@ -107,6 +116,7 @@ void Fourmie::deplacementAleatoireEtRecolte(Carte* C, int elementHaut, int eleme
                     case 3:
                         //DROITE
                         if(elementBas==0){
+                            std::cout << "a l'Est.\n";
                             deplacement(C, this->positionX, this->positionY+1);
                             deplacementFait = true;
                             break;
@@ -114,7 +124,10 @@ void Fourmie::deplacementAleatoireEtRecolte(Carte* C, int elementHaut, int eleme
                     randDirection = rand() % 4;
                 }//end Switch
             } //end while
-        } //end else
+        } else {
+            std::cout << "mais est bloquee.\n";
+        }//end else
+    } //end else
 }
 
 void Fourmie::retourFourmilliere(Carte* C, int elementHaut, int elementBas, int elementGauche, int elementDroite){

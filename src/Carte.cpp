@@ -29,7 +29,7 @@ Carte::Carte(int col, int line, int obs, int f, float phe){
 void Carte::initialisation(){
     srand ( time(NULL) );
 
-    vecteur2D.at(dimensionL/2).at(dimensionC/2) = new Fourmilliere(1, 10, 3, dimensionL/2, dimensionC/2);
+    vecteur2D.at(dimensionL/2).at(dimensionC/2) = new Fourmilliere(1, 10, 1, dimensionL/2, dimensionC/2);
 
     int compteur=0;
     while(compteur<obstacles){
@@ -54,6 +54,7 @@ void Carte::initialisation(){
 
 void Carte::affiche(){
     for(int i=0; i<vecteur2D.size();i++){
+        std::cout << "|";
         for(int j=0; j<vecteur2D[i].size(); j++){
             int o_type = vecteur2D[i][j]->type();  //0 = rien, 1=obstacle, 2=nourriture, 3=fourmieAllier, 4=fourmieEnnemie, 5=fourmiliereAllier, 6=fourmiliereEnnemis (ALLIER OU ENNEMIS PAS ENCORE DEFINIS)
             switch(o_type)
@@ -89,7 +90,28 @@ void Carte::affiche(){
                     }
             }
         }
+        std::cout << "|";
         std::cout << std::endl;
+    }
+}
+
+void Carte::resetActions(){
+
+    for(int i=0; i<vecteur2D.size();i++){
+        for(int j=0; j<vecteur2D[i].size(); j++){
+            int o_type = vecteur2D[i][j]->type();  //0 = rien, 1=obstacle, 2=nourriture, 3=fourmieAllier, 4=fourmieEnnemie, 5=fourmiliereAllier, 6=fourmiliereEnnemis (ALLIER OU ENNEMIS PAS ENCORE DEFINIS)
+            switch(o_type)
+            {
+
+                case 3: //Fourmie
+                    {
+                    Fourmie* fourmie =  dynamic_cast<Fourmie*>(this->vecteur2D[i][j]);
+                    fourmie->active = true;
+                    break;
+                    }
+
+            }
+        }
     }
 }
 
@@ -102,19 +124,25 @@ void Carte::update(){
             int o_type = vecteur2D[i][j]->type();  //0 = rien, 1=obstacle, 2=nourriture, 3=fourmieAllier, 4=fourmieEnnemie, 5=fourmiliereAllier, 6=fourmiliereEnnemis (ALLIER OU ENNEMIS PAS ENCORE DEFINIS)
             switch(o_type)
             {
-/*
+
                 case 3: //Fourmie
                     {
-                        std::cout << " UPDATE FOURMIE... \n ";
-                    Fourmie* fourmie =  dynamic_cast<Fourmie*>(this->vecteur2D[i][j]);
-                    fourmie->observeEtDecide(this);
+                        Fourmie* fourmie =  dynamic_cast<Fourmie*>(this->vecteur2D[i][j]);
+                        if(fourmie->active == true) //Evite les fourmis d'agir 2 fois dans le tour
+                        {
+                            std::cout << " UPDATE FOURMIE... \n ";
+                            fourmie->observeEtDecide(this);
+                            fourmie->active = false;
+                            break;
+                        }
                     }
-*/
+
                 case 5: //Fourmilliere
                     {
                         std::cout << " UPDATE FOURMILLIERE... \n ";
-                    Fourmilliere* fourmilliere = dynamic_cast<Fourmilliere*>(this->vecteur2D[i][j]);
-                    fourmilliere->checkFourmies(this);
+                        Fourmilliere* fourmilliere = dynamic_cast<Fourmilliere*>(this->vecteur2D[i][j]);
+                        fourmilliere->checkFourmies(this);
+                        break;
                     }
             }
         }

@@ -32,7 +32,23 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Box.h" />
+		<Unit filename="include/Carte.h" />
+		<Unit filename="include/Fourmie.h" />
+		<Unit filename="include/Fourmilliere.h" />
+		<Unit filename="include/Guerriere.h" />
+		<Unit filename="include/Nourriture.h" />
+		<Unit filename="include/Obstacle.h" />
+		<Unit filename="include/Ouvriere.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Box.cpp" />
+		<Unit filename="src/Carte.cpp" />
+		<Unit filename="src/Fourmie.cpp" />
+		<Unit filename="src/Fourmilliere.cpp" />
+		<Unit filename="src/Guerriere.cpp" />
+		<Unit filename="src/Nourriture.cpp" />
+		<Unit filename="src/Obstacle.cpp" />
+		<Unit filename="src/Ouvriere.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
