@@ -18,7 +18,7 @@ Ouvriere::Ouvriere(int team, Fourmilliere* fourmilliereM, int posX, int posY, bo
 
   tempsAvantGuerriere = 20;
   nourriturePortee = 0;
-  force = 5;
+  force = 2;
 
   fourmilliereMaison=fourmilliereM;
 
@@ -77,16 +77,16 @@ void Ouvriere::observeEtDecide(Carte* C) {
             mangerPortee();
         } else
         {//rentre a la fourmilliere
-            std::cout << "  Elle retourne se nourrir chez elle. \n ";
+            std::cout << "  Elle retourne se nourrir chez elle ";
             retourFourmilliere(C ,elementHaut, elementBas, elementGauche, elementDroite);
         }
 
     } else if(objectifActuel==2) //RETOUR A LA FOURMILLIERE
     {
-        std::cout << "  Elle se dirige vers chez elle. \n ";
+        std::cout << "  Elle se dirige vers chez elle ";
       retourFourmilliere(C ,elementHaut, elementBas, elementGauche, elementDroite);
     }
-std::cout << " Nouvelle Position x : "<< this->positionX << " , Position Y : " << this->positionY <<"\n ";
+std::cout << "    Nouvelle Position x : "<< this->positionX << " , Position Y : " << this->positionY <<"\n ";
 std::cout << " L'ouvriere a fini pour ce cycle.\n";
 }
 

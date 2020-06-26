@@ -24,7 +24,8 @@ Fourmilliere::~Fourmilliere()
 
 void Fourmilliere::checkFourmies(Carte* C)
 {
-    std::cout << " Pendant ce temps dans la Fourmilliere... \n ";
+    std::cout << "=== Pendant ce temps dans la Fourmilliere === \n ";
+    std::cout << "  Reserve de nourriture : "<< this->reserveNourriture<<"\n ";
     std::vector<int> fourmiesSortie;
 
     bool hautOK = true; //Evite que deux fourmis sortent du même cotés.
@@ -39,12 +40,14 @@ void Fourmilliere::checkFourmies(Carte* C)
                 std::cout << " - Fourmie : " << i <<" -\n ";
             if(this->vecteurFourmie.at(i)->active == false) {
                 std::cout << "   Viens tout juste de rentrer.\n ";
+                this->vecteurFourmie.at(i)->active = true;
             } else {
             //Verifier si une fourmie porte a manger et le recuperer
             if(this->vecteurFourmie.at(i)->nourriturePortee > 0){
                 std::cout << "   Nourriture recupere : " << this->vecteurFourmie.at(i)->nourriturePortee <<"\n ";
                 this->reserveNourriture += this->vecteurFourmie.at(i)->nourriturePortee;
                 this->vecteurFourmie.at(i)->nourriturePortee = 0;
+                std::cout << "  Reserve de nourriture passe a : "<< this->reserveNourriture<<"\n ";
             }
             //Verifier la faim d'une fourmie et la nourir
             while(this->vecteurFourmie.at(i)->nourritureMax - this->vecteurFourmie.at(i)->nourritureActuel > 0 && this->reserveNourriture > 0){
@@ -100,6 +103,7 @@ void Fourmilliere::checkFourmies(Carte* C)
                     }
                 }
             }
+
         }
 
         if(!fourmiesSortie.empty()) //Verifie si des fourmies sont sorties durant la boucle FOR et les retires du vecteur
@@ -111,7 +115,7 @@ void Fourmilliere::checkFourmies(Carte* C)
     }
 
 
-std::cout << "-FIN- Retour a l'exterieur... \n ";
+std::cout << "=== FIN - Retour a l'exterieur === \n ";
 }
 
 int Fourmilliere::type(){

@@ -122,6 +122,7 @@ void Carte::update(){
     for(int i=0; i<vecteur2D.size();i++){
         for(int j=0; j<vecteur2D[i].size(); j++){
             int o_type = vecteur2D[i][j]->type();  //0 = rien, 1=obstacle, 2=nourriture, 3=fourmieAllier, 4=fourmieEnnemie, 5=fourmiliereAllier, 6=fourmiliereEnnemis (ALLIER OU ENNEMIS PAS ENCORE DEFINIS)
+            //std::cout << "Check X : "<< i <<" ,Y : "<< j <<" case : "<< o_type <<"\n ";
             switch(o_type)
             {
 
@@ -135,6 +136,7 @@ void Carte::update(){
                             fourmie->active = false;
                             break;
                         }
+                        break;
                     }
 
                 case 5: //Fourmilliere
