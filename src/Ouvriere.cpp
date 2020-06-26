@@ -43,13 +43,13 @@ void Ouvriere::observeEtDecide(Carte* C) {
     int elementBas = C->vecteur2D[this->positionX+1][this->positionY]->type();
     int elementGauche = C->vecteur2D[this->positionX][this->positionY-1]->type();
     int elementDroite = C->vecteur2D[this->positionX][this->positionY+1]->type();
-
+/*
     std::cout << " Haut : "<< elementHaut <<"\n ";
     std::cout << " Bas : "<< elementBas <<"\n ";
     std::cout << " Gauche : "<< elementGauche <<"\n ";
     std::cout << " Droite : "<< elementDroite <<"\n ";
-    std::cout << " Ancienne Position x : "<< this->positionX << " , Position Y : " << this->positionY <<"\n ";
-
+    */
+    std::cout << " Ancienne Position X : "<< this->positionX << " , Y : " << this->positionY <<"\n ";
     std::cout << " L'ouvriere observe et decide";
     //DECIDE SELON SON ETAT
     if(this->nourritureActuel < nourritureMax * 20 / 100)   //20% de la nourriture max
@@ -86,7 +86,7 @@ void Ouvriere::observeEtDecide(Carte* C) {
         std::cout << "  Elle se dirige vers chez elle ";
       retourFourmilliere(C ,elementHaut, elementBas, elementGauche, elementDroite);
     }
-std::cout << "    Nouvelle Position x : "<< this->positionX << " , Position Y : " << this->positionY <<"\n ";
+std::cout << "    Nouvelle Position X : "<< this->positionX << " , Y : " << this->positionY <<"\n ";
 std::cout << " L'ouvriere a fini pour ce cycle.\n";
 }
 
